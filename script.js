@@ -73,7 +73,7 @@ function previousSong() {
 }
 
 function nextSong() {
-  if (currentSong + 1 <= songs.lenght - 1) {
+  if (currentSong + 1 <= songs.length - 1) {
     currentSong++;
     playSong();
   }
