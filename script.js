@@ -29,20 +29,24 @@ const play = document.querySelector("#play");
 const next = document.querySelector("#next");
 const player = document.querySelector("audio");
 const repeat1 = document.querySelector("#repeatOne");
+const autoplay = document.querySelector("#autoplay");
 player.volume = 0.3;
 
 input.onchange = getSongs;
 previous.onclick = previousSong;
 next.onclick = nextSong;
 repeat1.onclick = repeatSong;
+autoplay.onclick = makeAutoplay;
+
+function makeAutoplay(){
+  if(this.checked) player.autoplay = true;
+  else player.autoplay = false;
+}
 
 function repeatSong(){
   console.log(this.checked);
-  if(this.checked){
-    player.setAttribute("loop","true");
-  }else{
-    player.removeAttribute("loop","false");
-  }
+  if(this.checked) player.loop = true;
+  else player.loop = false;
 }
 
 function getSongs(event) {
@@ -56,9 +60,8 @@ function getSongs(event) {
 
 function playSong() {
   // make random songs
-  if(document.querySelector("#repeatOne").checked){
-    //
-  }else if(document.querySelector("#random").checked){
+  if(document.querySelector("#random").checked 
+     && !document.querySelector("#repeatOne").checked){
     currentSong = Math.floor(Math.random() * songs.length);
   }
   console.log('[playSong]::currentSong: ' + currentSong);

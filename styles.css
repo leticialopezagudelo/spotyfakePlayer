@@ -15,6 +15,7 @@ input {
 }
 
 #repeatOne,
+#autoplay,
 #random {
   display:inline-block;
 }
