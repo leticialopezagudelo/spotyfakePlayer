@@ -36,12 +36,6 @@ input.onchange = getSongs;
 previous.onclick = previousSong;
 next.onclick = nextSong;
 repeat1.onclick = repeatSong;
-autoplay.onclick = makeAutoplay;
-
-function makeAutoplay(){
-  if(this.checked) player.autoplay = true;
-  else player.autoplay = false;
-}
 
 function repeatSong(){
   console.log(this.checked);
@@ -55,8 +49,10 @@ function getSongs(event) {
   label.innerText = songs[currentSong].name.slice(0, -4);
   title.innerText = "Spotyfake Player 🎧";
 }
-
-
+// if autoplay is checked then next song will start automatically
+player.onended = () => {
+  if(autoplay.checked) nextSong();
+}
 
 function playSong() {
   // make random songs
@@ -76,6 +72,7 @@ function playSong() {
   player.play();
   play.innerText = "⏸";
   play.onclick = pause;
+
 }
 
 function pause() {
