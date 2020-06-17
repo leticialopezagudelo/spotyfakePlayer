@@ -14,6 +14,12 @@ input {
   display: none;
 }
 
+#repeatOne,
+#random {
+  display:inline-block;
+}
+
+
 .file-upload {
   background-color: rgba(0, 0, 0, 0.4);
   cursor: pointer;

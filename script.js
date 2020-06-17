@@ -28,11 +28,22 @@ const previous = document.querySelector("#previous");
 const play = document.querySelector("#play");
 const next = document.querySelector("#next");
 const player = document.querySelector("audio");
+const repeat1 = document.querySelector("#repeatOne");
 player.volume = 0.3;
 
 input.onchange = getSongs;
 previous.onclick = previousSong;
 next.onclick = nextSong;
+repeat1.onclick = repeatSong;
+
+function repeatSong(){
+  console.log(this.checked);
+  if(this.checked){
+    player.setAttribute("loop","true");
+  }else{
+    player.removeAttribute("loop","false");
+  }
+}
 
 function getSongs(event) {
   songs = event.target.files;
@@ -41,7 +52,16 @@ function getSongs(event) {
   title.innerText = "Spotyfake Player 🎧";
 }
 
+
+
 function playSong() {
+  // make random songs
+  if(document.querySelector("#repeatOne").checked){
+    //
+  }else if(document.querySelector("#random").checked){
+    currentSong = Math.floor(Math.random() * songs.length);
+  }
+  console.log('[playSong]::currentSong: ' + currentSong);
   let song = URL.createObjectURL(songs[currentSong]);
   label.innerText = songs[currentSong].name.slice(0, -4);
   label.style.color = colors[Math.floor(Math.random() * songs.length)];
@@ -72,11 +92,15 @@ function previousSong() {
     currentSong--;
     playSong();
   }
+  
 }
 
 function nextSong() {
   if (currentSong + 1 <= songs.length - 1) {
     currentSong++;
+    playSong();
+  }else{
+    currentSong = 0;
     playSong();
   }
 }
