@@ -44,9 +44,9 @@ function getSongs(event) {
 function playSong() {
   let song = URL.createObjectURL(songs[currentSong]);
   label.innerText = songs[currentSong].name.slice(0, -4);
-  label.style.color = colors[Math.floor(Math.random() * songs.lenght)];
+  label.style.color = colors[Math.floor(Math.random() * songs.length)];
   label.style.backgroundColor =
-    colors[Math.floor(Math.random() * songs.lenght)];
+    colors[Math.floor(Math.random() * songs.length)];
   player.setAttribute("src", song);
   player.play();
   play.innerText = "⏸";
