@@ -47,6 +47,8 @@ function playSong() {
   label.style.color = colors[Math.floor(Math.random() * songs.length)];
   label.style.backgroundColor =
     colors[Math.floor(Math.random() * songs.length)];
+  document.querySelector("body").style.backgroundColor =
+    colors[Math.floor(Math.random() * colors.length)];
   player.setAttribute("src", song);
   player.play();
   play.innerText = "⏸";
