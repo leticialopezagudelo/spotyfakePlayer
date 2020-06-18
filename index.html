@@ -3,20 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <title>Spotyfake</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap"
     />
-    <title>Spotyfake</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <h1>Select a song!</h1>
     <label class="file-upload">
       <input type="file" name="songs" multiple />
-      Click here to upload songs 🎶
+      Click here to upload songs
+      <i id="upload" style="font-size:24px" class="fa">&#xf0ee;</i>
     </label>
-    <audio></audio>
+    <audio src=""></audio>
     <div id="buttons">
       <i id="repeat" class="fa">&#xf021;</i>
       <i id="random" class="fa">&#xf074;</i>
