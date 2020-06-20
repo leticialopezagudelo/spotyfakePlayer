@@ -33,3 +33,7 @@ input {
 #buttons {
   text-align: center;
 }
+
+.pause {
+    display: none;
+}

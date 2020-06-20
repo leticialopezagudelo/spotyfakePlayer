@@ -3,31 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <title>Spotyfake</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Jost:wght@200&display=swap"
     />
-    <title>Spotyfake</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <h1>Select a song!</h1>
     <label class="file-upload">
       <input type="file" name="songs" multiple />
-      Click here to upload songs 🎶
+      Click here to upload songs
+      <i id="upload" style="font-size:24px" class="fa">&#xf0ee;</i>
     </label>
-    <audio></audio>
+    <audio src=""></audio>
     <div id="buttons">
-      <button id="previous">⏪</button>
-      <button id="play">▶️</button>
-      <button id="next">⏩</button>
+      <button id="previous" class="fa" style="border:none;background:none;color:white;">&#xf04a;</button>
+      <button id="play" class="fa" style="border:none;background:none;color:white;">&#xf144;</button>
+      <button class="fa" id="next" style="border:none;background:none;color:white;">&#xf04e;</button>
       <div style="display:inline-block">
         <input id="autoplay" type="checkbox" checked><label>autoplay</label>
         <input id="repeatOne" type="checkbox"><!-- 
-        --><label>repeat</label>
+        --><label class="fa">&#xf021;</label>
         <input id="random" type="checkbox"><!--
-        --><label>random</label>
+        --><label class="fa">&#xf074;</label>
       </div>
+
+      <i id="volumeUp" class="fa">&#xf028;</i>
+      <i id="volumeDown" class="fa">&#xf027;</i>
     </div>
     <script src="script.js"></script>
   </body>

@@ -70,19 +70,19 @@ function playSong() {
     colors[Math.floor(Math.random() * colors.length)];
   player.setAttribute("src", song);
   player.play();
-  play.innerText = "⏸";
+  play.innerHTML = "\uf144";
   play.onclick = pause;
 
 }
 
 function pause() {
-  play.innerText = "▶️";
+  play.innerHTML = "️\uf28b️";
   player.pause();
   play.onclick = playCurrent;
 }
 
 function playCurrent() {
-  play.innerText = "⏸";
+  play.innerHTML = "\uf144";
   player.play();
   play.onclick = pause;
 }
