@@ -1,3 +1,4 @@
+"use strict";
 let songs = [];
 let currentSong = 0;
 const colors = [
