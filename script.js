@@ -1,6 +1,8 @@
-"use strict";
+
+// Global variables
 let songs = [];
 let currentSong = 0;
+let volume = 0.3; // initial volume
 const colors = [
   "Aqua",
   "Aquamarine",
@@ -21,19 +23,31 @@ const colors = [
   "GreenYellow",
   "Lime"
 ];
-
 const title = document.querySelector("h1");
 const input = document.querySelector("input");
 const label = document.querySelector("label");
 const previous = document.querySelector("#previous");
 const play = document.querySelector("#play");
+const pause = document.querySelector("#pause");
 const next = document.querySelector("#next");
 const player = document.querySelector("audio");
-player.volume = 0.3;
+//const random = document.querySelector("#random");
+//const repeat = document.querySelector("#repeat");
+//const repeatOn = document.querySelector("#repeatOn");
+const volumeUp = document.querySelector("#volumeUp");
+const volumeDown = document.querySelector("#volumeDown");
+const pauseButton = pause.innerText;
+const playButton = play.innerText;
 
+player.volume = volume;
+player.onended = playNext;
 input.onchange = getSongs;
 previous.onclick = previousSong;
 next.onclick = nextSong;
+volumeUp.onclick = volUp;
+volumeDown.onclick = volDown;
+/*random.onclick = getRandomSong;*/
+
 
 function getSongs(event) {
   songs = event.target.files;
@@ -52,20 +66,20 @@ function playSong() {
     colors[Math.floor(Math.random() * colors.length)];
   player.setAttribute("src", song);
   player.play();
-  play.innerText = "⏸";
-  play.onclick = pause;
+  play.innerText = pauseButton;
+  play.onclick = pauseCurrent;
 }
 
-function pause() {
-  play.innerText = "▶️";
+function pauseCurrent() {
+  play.innerText = playButton;
   player.pause();
   play.onclick = playCurrent;
 }
 
 function playCurrent() {
-  play.innerText = "⏸";
+  play.innerText = pauseButton;
   player.play();
-  play.onclick = pause;
+  play.onclick = pauseCurrent;
 }
 
 function previousSong() {
@@ -76,8 +90,27 @@ function previousSong() {
 }
 
 function nextSong() {
-  if (currentSong + 1 <= songs.length - 1) {
+  if (currentSong + 1 < songs.length - 1) {
     currentSong++;
     playSong();
   }
+}
+
+function volUp() {
+  volume += 0.05;
+  player.volume = volume.toFixed(2);
+  console.log(player.volume);
+}
+
+function volDown() {
+  if (volume >= 0.001) {
+    volume -= 0.05;
+    player.volume = volume.toFixed(2);
+    console.log(player.volume);
+  }
+}
+
+function playNext() {
+  currentSong++;
+  playSong();
 }
