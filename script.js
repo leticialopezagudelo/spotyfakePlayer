@@ -1,4 +1,3 @@
-
 // Global variables
 let songs = [];
 let currentSong = 0;
@@ -32,7 +31,7 @@ const pause = document.querySelector("#pause");
 const next = document.querySelector("#next");
 const player = document.querySelector("audio");
 //const random = document.querySelector("#random");
-//const repeat = document.querySelector("#repeat");
+const repeat = document.querySelector("#repeat");
 //const repeatOn = document.querySelector("#repeatOn");
 const volumeUp = document.querySelector("#volumeUp");
 const volumeDown = document.querySelector("#volumeDown");
@@ -41,6 +40,7 @@ const playButton = play.innerText;
 
 player.volume = volume;
 player.onended = playNext;
+repeat.onclick = playAgain;
 input.onchange = getSongs;
 previous.onclick = previousSong;
 next.onclick = nextSong;
@@ -48,6 +48,12 @@ volumeUp.onclick = volUp;
 volumeDown.onclick = volDown;
 /*random.onclick = getRandomSong;*/
 
+function playAgain() {
+  if (player.ended) {
+    playSong(currentSong);
+    console.log(currentSong.name);
+  }
+}
 
 function getSongs(event) {
   songs = event.target.files;
